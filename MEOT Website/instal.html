@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Furniture Installation Guide</title>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+   .installation-container {
+      max-width: 1100px;
+      margin: 150px auto;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+
+    .furniture {
+      width: 40%;
+      margin: 20px;
+      text-align: center;
+    }
+
+    .furniture img {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 5px;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .furniture img:hover {
+      border: 1px solid #555;
+    }
+
+    .installation-steps {
+      display: none;
+      margin-top: 20px;
+    }
+
+    .show-steps-btn {
+      background-color: beige;
+      color: black;
+      padding: 10px 20px;
+      text-decoration: none;
+      display: inline-block;
+      border-radius: 5px;
+      cursor: pointer;
+       transition: background 0.3s ease; /* Add transition property for the background */
+    }
+
+    .show-steps-btn:hover {
+      background: linear-gradient(45deg, #ff7e5f, #feb47b); 
+      transform: scale(1.1);
+}
+
+    /* Added style for fade-in effect */
+    .fade-in {
+      opacity: 1;
+      transition: opacity 0.5s ease-in-out;
+    }
+    .steps-visible {
+      display: block !important;
+    }
+  </style>
+
+</head>
+
+<body>
+
+    <!-- Top Navigation Bar -->
+    <nav class="navbar">
+      <button onclick="window.location.href='index.html';"class="name-btn">MEOT</button>
+      <div class="nav-right">
+        <button onclick="window.location.href='about.html';" class="about-btn">About</button>
+            <button onclick="window.location.href='contact.html';" class="contact-btn">Contact</button>
+            <button onclick="window.location.href='products.html';" class="products-btn">Products</button>
+            <button onclick="window.location.href='instal.html';" class="instal-btn">Installation</button>
+            <button onclick="window.location.href='Production_time.html';" class="production_time-btn">Production Time</button>
+            <button onclick="window.location.href='signin.html';" class="signin-btn">Sign In</button>
+      </div>
+    </nav>
+
+
+  <div class="installation-container">  
+<!-- Furniture 1 -->
+    <div class="furniture" id="stair-stool">
+      <h2>Stair Stool Installation</h2>
+      <br>
+      <img src="meot\stair-stool.jpeg" alt="Stair Stool">
+      <p>Elevate your space with our stylish stair stool—perfect for modern and traditional interiors. Easy installation, durable design.</p>
+      <br>
+      <div class="installation-steps">
+        <p>Step 1: Insert the dowel and screw into the holes of the three parts that are shown in the image.</p>
+        <br>
+        <p>Step 2: Then, fit these parts to the two legs of the stair tool respectively, and fix the screws to the legs with the help of a wrench screwdriver. Fix the third compatible piece to the top.</p>
+        <br>
+        <p>Step 3: The last step is to place the plates to the steps.</p>
+        <br>
+      </div>
+      <a href="#" class="show-steps-btn" onclick="showSteps(event, 'stair-stool')">Show Installation Steps</a>
+    </div>
+
+    <!-- Furniture 2 -->
+    <div class="furniture" id="bar-stool">
+      <h2>Bar Stool Installation</h2>
+      <br>
+      <img src="meot\bar-stool.jpeg" alt="Bar Stool">
+      <br>
+      <p>Upgrade your seating with our contemporary bar stool. Modern, ergonomic, and easy to install for a chic home or commercial space.</p>
+      <br>
+      <div class="installation-steps">
+        <!-- Add Bar Stool installation steps here -->
+        <p>Step 1: Insert the dowel and screw into the holes of the two parts shown in the picture.</p>
+        <br>
+        <p>Step 2: Then, attach these parts to the top and bottom of the bar stool's leg and put the two legs of the stool together; and fix the screws to the legs with the help of a wrench.</p>
+        <br>
+        <p>Step 3: The last step is to place the plate on top of the stool.</p>
+        <br>
+      </div>
+      <a href="#" class="show-steps-btn" onclick="showSteps(event, 'bar-stool')">Show Installation Steps</a>
+    </div>
+
+    <!-- Furniture 3 -->
+    <div class="furniture" id="circle-stool">
+      <h2>Circle Stool Installation</h2>
+      <br>
+      <img src="meot\circle-stool.jpeg" alt="Circle Stool">
+      <br>
+      <p>Add flair with our Circle Stool—elegant, versatile, and easy to install. Elevate any room with this unique, stylish piece.</p>
+      <br>
+      <div class="installation-steps">
+        <p>Step 1: Insert the dowel and screw it into the holes of one of the legs of the stool.</p>
+        <br>
+        <p>Step 2: Then put the two legs of the stool together and place the plate on top of the stool.</p>
+        <br>
+      </div>
+      <a href="#" class="show-steps-btn" onclick="showSteps(event, 'circle-stool')">Show Installation Steps</a>
+    </div>
+  </div>
+    <!-- Footer -->
+    <footer>
+      <p class="footer-text">
+          meotstudio
+      </p>
+    </footer>
+  <script>
+    function showSteps(event, elementId) {
+      event.preventDefault(); 
+  
+      var installationSteps = document.getElementById(elementId).getElementsByClassName('installation-steps')[0];
+  
+      installationSteps.classList.toggle('steps-visible');
+    }
+  </script>
+
+</body>
+</html>

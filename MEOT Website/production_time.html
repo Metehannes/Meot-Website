@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Production Time</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        background-color: #333;
+        padding: 10px;
+        width: 100%;
+      }
+      .navbar button {
+        background-color: #333;
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+      }
+      .navbar button:hover {
+        background-color: #555;
+      }
+      .nav-right {
+        display: flex;
+      }
+      .nav-right button {
+        margin-left: 10px;
+      }
+      .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        padding: 20px;
+        text-align: center;
+      }
+      .form-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: calc(100vh - 200px); /* Adjusting for navbar and footer height */
+        width: 100%;
+        max-width: 500px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+      .form-container form {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: #f9f9f9;
+      }
+      .form-container input, .form-container select {
+        margin: 10px 0;
+        padding: 10px;
+        width: calc(100% - 22px); /* Same width as the select element */
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      .form-container button {
+        padding: 10px 20px;
+        background-color: #333;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+      .form-container button:hover {
+        background-color: #555;
+      }
+      .footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #333;
+        padding: 2px;
+        width: 100%; /* Yazı boyutunu ayarlayın */
+        }
+
+      .footer-text {
+        text-align: center;
+        padding: 2px;
+        background-color: #333;
+        color: white;
+        width: 100%;
+      }
+      .result-container {
+        margin-top: 20px;
+      }
+      .form-container label {
+        text-align: left;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Top Navigation Bar -->
+    <nav class="navbar">
+      <button onclick="window.location.href='index.html';" class="name-btn">MEOT</button>
+      <div class="nav-right">
+        <button onclick="window.location.href='about.html';" class="about-btn">About</button>
+            <button onclick="window.location.href='contact.html';" class="contact-btn">Contact</button>
+            <button onclick="window.location.href='products.html';" class="products-btn">Products</button>
+            <button onclick="window.location.href='instal.html';" class="instal-btn">Installation</button>
+            <button onclick="window.location.href='Production_time.html';" class="production_time-btn">Production Time</button>
+            <button onclick="window.location.href='signin.html';" class="signin-btn">Sign In</button>
+      </div>
+    </nav>
+    
+    <div class="content">
+      <!-- Production Time Calculation Page -->
+      <div class="form-container">
+        <h2>Üretim Süresi Hesaplama</h2>
+        <form id="production-form">
+            <label for="product">Ürün Seçin:</label>
+            <select name="product_id" id="product">
+                <option value="1">Bar Taburesi</option>
+                <option value="2">Merdiven Tabure</option>
+                <option value="3">O Tabure</option>
+                <option value="4">Mutfak Taburesi</option>
+                <option value="5">Kızaklı Laptop Tutacağı</option>
+                <option value="6">X Laptop Tutacağı</option>
+                <option value="7">Kablo Verici</option>
+            </select>
+            <label for="quantity">Adet:</label>
+            <input type="number" name="quantity" id="quantity" min="1" value="1">
+            <button type="submit">Hesapla</button>
+        </form>
+        <div id="result" class="result-container"></div>
+      </div>
+    </div>
+
+    <script>
+        document.getElementById('production-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const product = document.getElementById('product').value;
+            const quantity = document.getElementById('quantity').value;
+
+            fetch('calculate_time.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ product_id: product, quantity: quantity })
+            })
+            .then(response => response.json())
+            .then(data => {
+                const productionTime = data.production_time; // Üretim süresi dakika cinsinden
+                let message;
+
+                if (productionTime <= 360) { // 6 saat = 360 dakika
+                  message = "1 İş gününde yapılır.";
+                } else {
+                  const days = Math.ceil(productionTime / 360); // 360 dakikada bir gün
+                  message = `${days} iş gününde yapılır.`;
+                }
+
+                document.getElementById('result').innerHTML = 
+                    `Üretim Süresi: ${message}`;
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+
+  </body>
+  </html>
+        
+        
+  <a href="https://www.instagram.com/meotstudio/">
+    <img src="meot\instagram.png">
+  </a>
+<div class="footer">
+    <p class="footer-text">meotstudio</p>
+<div>
+</footer>
+</html>

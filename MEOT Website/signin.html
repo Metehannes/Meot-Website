@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MEOT - Sign In & Sign Up</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            background-color: #333;
+            padding: 10px;
+            width: 100%;
+        }
+
+        .navbar button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .navbar button:hover {
+            background-color: #555;
+        }
+
+        .nav-right {
+            display: flex;
+        }
+
+        .nav-right button {
+            margin-left: 10px;
+        }
+
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 400px;
+            margin-top: 20px; /* Adjusting for navbar height */
+            margin-bottom: 20px;
+        }
+
+        .form-heading {
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+        }
+
+        input {
+            margin: 10px 0;
+            padding: 10px;
+            width: calc(100% - 20px);
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .form-btn {
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .form-btn:hover {
+            background-color: #555;
+        }
+
+
+        .footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #333;
+        padding: 2px;
+        width: 100%; /* Yazı boyutunu ayarlayın */
+        }
+
+      .footer-text {
+        text-align: center;
+        padding: 2px;
+        background-color: #333;
+        color: white;
+        width: 100%;
+      }
+
+        .signup-link {
+            margin-top: 20px;
+            text-align: center;
+            color: blue;
+            cursor: pointer;
+        }
+
+        .signup-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="navbar">
+        <button onclick="window.location.href='index.html';" class="name-btn">MEOT</button>
+        <div class="nav-right">
+            <button onclick="window.location.href='about.html';" class="about-btn">About</button>
+            <button onclick="window.location.href='contact.html';" class="contact-btn">Contact</button>
+            <button onclick="window.location.href='products.html';" class="products-btn">Products</button>
+            <button onclick="window.location.href='instal.html';" class="instal-btn">Installation</button>
+            <button onclick="window.location.href='Production_time.html';" class="production_time-btn">Production Time</button>
+            <button onclick="window.location.href='signin.html';" class="signin-btn">Sign In</button>
+        </div>
+    </nav>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+    <!-- Sign In Form -->
+    <div class="form-container">
+        <h2 class="form-heading">Sign In</h2>
+        <form id="signin-form" action="login.php" method="post">
+            <input type="text" name="username" id="signin-username" placeholder="Username" required />
+            <input type="password" name="password" id="signin-password" placeholder="Password" required />
+            <button type="submit" class="form-btn">Sign In</button>
+        </form>
+        <div class="signup-link" onclick="window.location.href='signup.html';">Still not a member? Sign up!</div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p class="footer-text">meotstudio</p>
+  </div>
+</body>
+</html>
